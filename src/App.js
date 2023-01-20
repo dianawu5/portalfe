@@ -9,7 +9,7 @@ To see the login and logout feature,
 please uncomment the codes in renderContent 
 and change the true to "authed" in Header
 */
-const { Header, Content } = Layout;
+const { Header, Content, Footer } = Layout;
 
 function App() {
   
@@ -70,6 +70,12 @@ function App() {
         style={{ height: "calc(100% - 64px)", padding: 20, overflow: "auto" }} >
         {renderContent()}
       </Content>
+      <Footer 
+        style={{textAlign: "center", backgroundColor:"#282c34", 
+        color:"gray", height:"5%", fontSize: 12, padding: "15px"}}
+      > 
+        Made by FLAGCAMP TEAM3 
+      </Footer>
 
     </Layout>
   );

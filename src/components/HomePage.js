@@ -57,7 +57,7 @@ const HomePage = () => {
 
             />
             </div>
-            <div >
+            <div style={{paddingLeft: "30px", paddingRight:"30px", paddingTop:"10px"}}>
                 {switchPage()}
             </div>
         </div>

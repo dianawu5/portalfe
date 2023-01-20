@@ -1,5 +1,8 @@
 import { Menu } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Announcements from './Annoncements';
+import Maintenance from './Maintenance';
+import Bills from './Bills';
 
 const items = [
     {
@@ -18,7 +21,11 @@ const items = [
 
 const HomePage = () => {
 
-    const[current, setCurrent] = useState('announcements');
+    const[current, setCurrent] = useState();
+
+    useEffect(() =>{
+        setCurrent('announcements');
+    },[]);
 
     const onItemClick = (e) => {
         setCurrent(e.key);
@@ -29,11 +36,11 @@ const HomePage = () => {
     const switchPage = () => {
         switch (current) {           
             case "maintenance":
-                return "Maintenance";
+                return <Maintenance />;
             case "bills": 
-                return "Bills";
+                return <Bills />;
             default:
-                return "Announcement";
+                return <Announcements />;
         }  
     };
     return (

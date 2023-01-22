@@ -1,8 +1,7 @@
 import { Button, Space, Table, Tag } from 'antd';
 import { useEffect, useState } from 'react';
-
+import NewRequestButton from './NewRequestButton';
   // This is a fake data list for testing only. Need to contact backend and make sure the status is string[] type
-
 
 
 const Maintenance = () => {
@@ -178,9 +177,7 @@ const Maintenance = () => {
             <div style={{ fontSize: 20, fontWeight: 600,paddingLeft:"15%" }}>
 
                 <div style={{padding: "10px"}} align="end">
-                <Button type="primary" size="large">
-                + New Maintenance Requst
-                </Button>
+                  <NewRequestButton />
                 </div>
                 <div style={{ padding:"5px",backgroundColor:"rgba(55, 88, 70,.1)"}}>
                     <div style={{ fontSize: 18, fontWeight: 600,padding:"5px",backgroundColor:"rgba(55, 88, 70,.1)"}}

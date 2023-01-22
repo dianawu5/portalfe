@@ -1,4 +1,4 @@
-import { Button,Form,Input,Select,Modal,message,} from 'antd';
+import { Button,Form,Input,Select,Modal,message, Space,} from 'antd';
 import { useState } from 'react';
 import { newRequest } from '../utils';
 
@@ -71,12 +71,14 @@ const NewRequestButton = () => {
                         <Input.TextArea style={{height: 150}} />
                     </Form.Item>
                     <Form.Item wrapperCol={{offset: 8, span: 16}}>
+                        <Space size="large">
                         <Button loading={loading} type="primary" htmlType="submit">
                             Submit
                         </Button>
                         <Button onClick={onReset}>
                             Clear
                         </Button>
+                        </Space>
                     </Form.Item>
                 </Form>
             </Modal>

@@ -1,4 +1,4 @@
-import { Button, message, Space, Table, Tag } from 'antd';
+import { Button, message, Space, Table} from 'antd';
 import { useEffect, useState } from 'react';
 import { deleteRequest } from '../utils';
 import NewRequestButton from './NewRequestButton';
@@ -16,7 +16,7 @@ and
 }
 
 */
-// This is a fake data list for testing only. Need to contact backend and make sure the status is string[] type
+// This is a fake data list for testing only.
 const Maintenance = () => {
 
   const rows=[
@@ -25,84 +25,84 @@ const Maintenance = () => {
       title:"roof is broken",
       date:"12/01/2020",
       description: "The roof is somehow broken. Please fix it.",
-      status:['approved'],
+      status:"Approved",
     },
     {
       requestId:"21",
         title:"roof is broken",
       date:"11/01/2020",
       description: "The roof is somehow broken. Please fix it.",
-      status:['open'],
+      status:"Approved",
     },
     {
       requestId:"15",
      title:"roof is broken",
       date:"12/01/2021",
       description: "The roof is somehow broken. Please fix it.",
-      status:['open'],
+      status:"Open",
     },
     {
       requestId:"12",
         title:"roof is broken",
       date:"02/01/2020",
       description: "The roof is somehow broken. Please fix it.",
-      status:['open'],
+      status:"Open",
     },
     {
       requestId:"13",
         title:"roof is broken",
       date:"12/01/2022",
       description: "The roof is somehow broken. Please fix it.",
-      status:['closed'],
+      status:"Closed",
     },
     {
       requestId:"6",
         title:"roof is broken",
       date:"12/15/2020",
       description: "The roof is somehow broken. Please fix it.",
-      status:['closed'],
+      status:"Closed",
     },
     {
       requestId:"10",
       title:"roof is broken",
       date:"11/11/2020",
       description: "The roof is somehow broken. Please fix it.",
-      status:['open'],
+      status:"Open",
     },
     {
       requestId:"4",
       title:"roof is broken",
       date:"12/10/2020",
       description: "The roof is somehow broken. Please fix it.",
-      status:['open'],
+      status:"Open",
     },
     {
       requestId:"18",
       title:"roof is broken",
       date:"10/01/2020",
       description: "The roof is somehow broken. Please fix it.",
-      status:['open'],
+      status:"Open",
     },
     {
       requestId:"31",
         title:"roof is broken",
       date:"12/01/2020",
       description: "The roof is somehow broken. Please fix it.",
-      status:['open'],
+      status:"Open",
     },
     {
       requestId:"22",
         title:"roof is broken",
       date:"12/01/2020",
       description: "The roof is somehow broken. Please fix it.",
-      status:['closed'],
+      status:"Closed",
     },
     {
       requestId:"26",
         title:"roof is broken",
       date:"12/01/2020",
       description: "The roof is somehow broken. Please fix it.",
-      status:['closed'],
+      status:"Closed",
     },
   ];
 
@@ -116,7 +116,6 @@ const Maintenance = () => {
       dataIndex: 'date',
       key: 'date',
       width: 120,
-      sorter: (a, b) => a.date - b.date,
     },
     {
       title: 'Title',
@@ -144,20 +143,6 @@ const Maintenance = () => {
         },
       ],
       onFilter: (value, record) => record.status.indexOf(value) === 0,
-
-      render: (_, { status }) => (
-        <>
-          {status.map((recordStatus) => {
-            let color = recordStatus === 'closed' ? 'lightgrey' : (recordStatus === 'approved'?'blue':'green');
-
-            return (
-              <Tag color={color} key={recordStatus}>
-                {recordStatus.toUpperCase()}
-              </Tag>
-            );
-          })}
-        </>
-      ),
     },
     {
       title: 'Action',

@@ -10,11 +10,6 @@ const NewRequestButton = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const [form] = Form.useForm();
-
-    const onReset = () => {
-        form.resetFields();
-    }
 
     const showModal = () => {
         setIsModalOpen(true);
@@ -42,7 +37,7 @@ const NewRequestButton = () => {
                 + New Maintenance Requst
             </Button>
             <Modal title="Start a new maintenance request" open={isModalOpen} onCancel={handleCancel} footer={null}>
-                <Form labelCol={{span: 8}} wrapperCol={{span: 16}} form={form}
+                <Form labelCol={{span: 8}} wrapperCol={{span: 16}} 
                     style={{maxWidth: 600}} onFinish={onFormSubmit}
                 >
                     <Form.Item name="title" label="Title"
@@ -75,7 +70,7 @@ const NewRequestButton = () => {
                         <Button loading={loading} type="primary" htmlType="submit">
                             Submit
                         </Button>
-                        <Button onClick={onReset}>
+                        <Button htmlType="reset" >
                             Clear
                         </Button>
                         </Space>

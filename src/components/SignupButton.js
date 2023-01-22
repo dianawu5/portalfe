@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { signup } from "../utils";
-import { Button, Modal, Form, Input,message } from "antd";
+import { Button, Modal, Form, Input,message, Space } from "antd";
 
 const SignupButton = () => {
 
@@ -45,6 +45,7 @@ const SignupButton = () => {
                         span: 14,
                     }}
                     layout="horizontal" 
+                    form = {form}
                     onFinish={onFormSubmit}
                 >
                     <Form.Item 
@@ -118,10 +119,15 @@ const SignupButton = () => {
                         <Input.Password disabled={loading} placeholder="Password"/>
                     </Form.Item> 
                     
-                    <Form.Item>
-                        <Button loading={loading} type="primary" htmlType="submit" >
-                            Sign Up
-                        </Button>
+                    <Form.Item wrapperCol={{offset: 7, span: 14}}>
+                        <Space size="large">
+                            <Button loading={loading} type="primary" htmlType="submit" >
+                                Sign Up
+                            </Button>
+                            <Button htmlType="reset">
+                                Reset
+                            </Button>
+                        </Space>
                     </Form.Item>
                 </Form>
             </Modal>

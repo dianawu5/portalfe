@@ -163,7 +163,6 @@ const Maintenance = () => {
       title: 'Action',
       key: 'action',
       width: 180,
-      delRow : {handleDelete},
 
       render: (_,record) =>
 
@@ -193,11 +192,11 @@ const Maintenance = () => {
     }
   };
 */ 
-  const handleDelete = (requestId) => {
+/*  const handleDelete = (requestId) => {
     const newData = data.filters((item) => item.requestId !== requestId);
     setData(newData);
   };
-
+*/
 
     return(
         <div>

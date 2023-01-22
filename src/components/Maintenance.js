@@ -1,9 +1,22 @@
-import { Button, Space, Table, Tag } from 'antd';
+import { Button, message, Space, Table, Tag } from 'antd';
 import { useEffect, useState } from 'react';
+import { deleteRequest } from '../utils';
 import NewRequestButton from './NewRequestButton';
-  // This is a fake data list for testing only. Need to contact backend and make sure the status is string[] type
 
 
+/* Similar to LoginForm.js & App.js, 
+in Maintenance there should be 
+(1) a function to refresh/reload the server data, such as const handleSuccess= () => {"code to reload updated data"}
+(2) in the return block, <NewRequestButton onSubmitSuccess={handleSuccess}/>
+
+in NewRequestButton.js, there should be 
+(1) const NewRequestButton = (onSubmitSuccess) => {}
+and 
+(2) try{ await newRequest(data); onSubmitSuccess(); ....} catch(){} finally{}
+}
+
+*/
+// This is a fake data list for testing only. Need to contact backend and make sure the status is string[] type
 const Maintenance = () => {
 
   const rows=[
@@ -95,7 +108,7 @@ const Maintenance = () => {
 
   const[data, setData]=useState(rows);
   
-
+  
   // to define each column
   const columns = [
     {
@@ -150,6 +163,7 @@ const Maintenance = () => {
       title: 'Action',
       key: 'action',
       width: 180,
+      delRow : {handleDelete},
 
       render: (_,record) =>
 
@@ -157,17 +171,33 @@ const Maintenance = () => {
           <Space size="middle">
             <Button> View </Button>
             <Button> Edit </Button>
-            <a onClick={() => handleDelete(record.requestId)}>Delete</a>
+            <a>Delete</a>
           </Space>
         ) : null
     },
   ];
 
-// TODO
+/* once connected to the server use this coding
+
+  const[loading,setLoading] = useState(false);
+
+  const handleDelete = async(requestId) => {
+    setLoading(true);
+    const newData = data.filters((item) => item.requestId !== requestId);
+    try{
+      await deleteRequest(requestId);
+      setData(newData);
+      message.success("You delete a reqeust successfully!");
+    } catch (error) {
+      message.error(error.message);
+    }
+  };
+*/ 
   const handleDelete = (requestId) => {
     const newData = data.filters((item) => item.requestId !== requestId);
     setData(newData);
   };
+
 
     return(
         <div>
@@ -184,7 +214,7 @@ const Maintenance = () => {
                     >
                         Requests Status
                     </div>
-                    <Table columns={columns} dataSource={data} size="small"/>
+                    <Table columns={columns} dataSource={data} size="small" />
                 </div>
             </div>
         </div>

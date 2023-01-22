@@ -45,7 +45,6 @@ const SignupButton = () => {
                         span: 14,
                     }}
                     layout="horizontal" 
-                    form = {form}
                     onFinish={onFormSubmit}
                 >
                     <Form.Item 

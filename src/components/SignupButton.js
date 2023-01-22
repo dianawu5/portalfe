@@ -6,14 +6,14 @@ const SignupButton = () => {
 
     const [loading, setLoading] = useState(false);
 
-    const [modalVisible, setModalVisible] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleSignupOnClick = () =>{
-        setModalVisible(true);
+        setIsModalOpen(true);
     };
 
     const handleCancel = () => {
-        setModalVisible(false);
+        setIsModalOpen(false);
     };
 
     const onFormSubmit = async(data) =>{
@@ -21,7 +21,7 @@ const SignupButton = () => {
         try {
             await signup(data);
             message.success("Sign up successfully!");
-            setModalVisible(false);
+            setIsModalOpen(false);
         } catch (error) {
             message.error(error.message);
         } finally {
@@ -35,7 +35,7 @@ const SignupButton = () => {
                 Sign Up
             </Button>
 
-            <Modal title="Sign Up" onCancel={handleCancel} footer={null} visible={modalVisible}>
+            <Modal title="Sign Up" onCancel={handleCancel} footer={null} open={isModalOpen}>
                 <Form 
                     labelCol={{
                         span: 7,

@@ -19,6 +19,7 @@ and
 
 const Maintenance = () => {
   const requestsList = maintenanceList();
+  const[loading,setLoading] = useState(false);
   const[data, setData]=useState(requestsList);
 
   // to define each column
@@ -78,27 +79,10 @@ const Maintenance = () => {
     setData(newData);
   };
 
-/* once connected to the server use this coding
 
-  const[loading,setLoading] = useState(false);
-
-  const[data, setData] = useState();
-  useEffect(() => {
-    getRequest().then(requests) => {setData(requests);} catch(error){message.error(error.message);}
-  }, []);
-
-  const handleDelete = async(requestId) => {
-    setLoading(true); 
-    try{
-      await deleteRequest(requestId);
-      message.success("You delete a reqeust successfully!");
-    } catch (error) {
-      message.error(error.message);
-    } finally {
-      setLoading(false);
-    }
+  const handleSubmitSuccess = () => {
+    setLoading(false);
   };
-*/ 
 
     return(
         <div>
@@ -108,7 +92,7 @@ const Maintenance = () => {
             <div style={{ fontSize: 20, fontWeight: 600,paddingLeft:"15%" }}>
 
                 <div style={{padding: "10px"}} align="end">
-                  <NewRequestButton />
+                  <NewRequestButton onSubmitRequestSuccess={handleSubmitSuccess}/>
                 </div>
                 <div style={{ padding:"5px",backgroundColor:"rgba(55, 88, 70,.1)"}}>
                     <div style={{ fontSize: 18, fontWeight: 600,padding:"5px",backgroundColor:"rgba(55, 88, 70,.1)"}}
@@ -214,3 +198,35 @@ const maintenanceList = () => {
 }
 
 export default Maintenance;
+
+/* once connected to the server use this coding
+
+  const[data, setData] = useState();
+  useEffect(() => {
+    handleDataLoading();  
+  }, []);
+
+  const handleDataLoading = async() => {
+    setLoading(true);
+    try {
+      const resp = await getRequests();
+      setData(resp);
+    } catch(error) {
+      message.error(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDelete = async(requestId) => {
+    setLoading(true); 
+    try{
+      await deleteRequest(requestId);
+      message.success("You delete a reqeust successfully!");
+    } catch (error) {
+      message.error(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+*/ 

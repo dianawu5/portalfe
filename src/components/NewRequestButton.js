@@ -5,7 +5,7 @@ import { newRequest } from '../utils';
 
 const { Option } = Select;
 
-const NewRequestButton = () => {
+const NewRequestButton = ({onSubmitRequestSuccess}) => {
     const [loading, setLoading] = useState(false);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,6 +24,7 @@ const NewRequestButton = () => {
             await newRequest(data);
             message.success("Submit new maintenance request successfully!");
             setIsModalOpen(false);
+            onSubmitRequestSuccess();
         } catch(error) {
             message.error(error.message);
         } finally {

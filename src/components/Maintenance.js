@@ -1,8 +1,8 @@
-import { Button, message, Space, Table, Popconfirm,} from 'antd';
+import { Button, message, Space, Table, Popconfirm, Modal,} from 'antd';
 import { useEffect, useState } from 'react';
 import { deleteRequest } from '../utils';
 import NewRequestButton from './NewRequestButton';
-
+import requestsList from '../mock-data.json';
 
 /* Similar to LoginForm.js & App.js, 
 in Maintenance there should be 
@@ -18,7 +18,7 @@ and
 */
 
 const Maintenance = () => {
-  const requestsList = maintenanceList();
+
   const[loading,setLoading] = useState(false);
   const[data, setData]=useState(requestsList);
 
@@ -64,13 +64,13 @@ const Maintenance = () => {
       render: (_, record) =>
         record.status === "Open" ? (
           <Space size="large">
-            <a>View</a>
-            <a>Edit</a>
+            <a >View</a>
+            <a style={{ fontSize: 14, fontWeight: 600, padding: 0 }}>Edit</a>
             <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.requestId)}>
-              <a>Delete</a>
+              <a style={{ fontSize: 14, fontWeight: 600, padding: 0 }}>Delete</a>
             </Popconfirm>
           </Space>
-      ) : (<a>View</a>),
+      ) : (<a >View</a>),
     },
   ];
 
@@ -80,9 +80,11 @@ const Maintenance = () => {
   };
 
 
+
   const handleSubmitSuccess = () => {
     setLoading(false);
   };
+
 
     return(
         <div>
@@ -90,7 +92,6 @@ const Maintenance = () => {
             Maintenance
             </div>
             <div style={{ fontSize: 20, fontWeight: 600,paddingLeft:"15%" }}>
-
                 <div style={{padding: "10px"}} align="end">
                   <NewRequestButton onSubmitRequestSuccess={handleSubmitSuccess}/>
                 </div>
@@ -104,97 +105,6 @@ const Maintenance = () => {
             </div>
         </div>
     );
-}
-
-// This is a fake data list for testing only.
-const maintenanceList = () => {
-  const reuestsList=[
-    {
-      requestId:"1",
-      title:"roof is broken",
-      date:"12/01/2020",
-      description: "The roof is somehow broken. Please fix it.",
-      status:"Approved",
-    },
-    {
-      requestId:"21",
-        title:"roof is broken",
-      date:"11/01/2020",
-      description: "The roof is somehow broken. Please fix it.",
-      status:"Approved",
-    },
-    {
-      requestId:"15",
-     title:"roof is broken",
-      date:"12/01/2021",
-      description: "The roof is somehow broken. Please fix it.",
-      status:"Open",
-    },
-    {
-      requestId:"12",
-        title:"roof is broken",
-      date:"02/01/2020",
-      description: "The roof is somehow broken. Please fix it.",
-      status:"Open",
-    },
-    {
-      requestId:"13",
-        title:"roof is broken",
-      date:"12/01/2022",
-      description: "The roof is somehow broken. Please fix it.",
-      status:"Closed",
-    },
-    {
-      requestId:"6",
-        title:"roof is broken",
-      date:"12/15/2020",
-      description: "The roof is somehow broken. Please fix it.",
-      status:"Closed",
-    },
-    {
-      requestId:"10",
-      title:"roof is broken",
-      date:"11/11/2020",
-      description: "The roof is somehow broken. Please fix it.",
-      status:"Open",
-    },
-    {
-      requestId:"4",
-      title:"roof is broken",
-      date:"12/10/2020",
-      description: "The roof is somehow broken. Please fix it.",
-      status:"Open",
-    },
-    {
-      requestId:"18",
-      title:"roof is broken",
-      date:"10/01/2020",
-      description: "The roof is somehow broken. Please fix it.",
-      status:"Open",
-    },
-    {
-      requestId:"31",
-        title:"roof is broken",
-      date:"12/01/2020",
-      description: "The roof is somehow broken. Please fix it.",
-      status:"Open",
-    },
-    {
-      requestId:"22",
-        title:"roof is broken",
-      date:"12/01/2020",
-      description: "The roof is somehow broken. Please fix it.",
-      status:"Closed",
-    },
-    {
-      requestId:"26",
-        title:"roof is broken",
-      date:"12/01/2020",
-      description: "The roof is somehow broken. Please fix it.",
-      status:"Closed",
-    },
-  ];
-  return reuestsList;
 }
 
 export default Maintenance;

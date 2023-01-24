@@ -1,5 +1,5 @@
 import { Menu } from 'antd';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Announcements from './Annoncements';
 import Maintenance from './Maintenance';
 import Bills from './Bills';

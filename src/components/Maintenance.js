@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { deleteRequest } from '../utils';
 import NewRequestButton from './NewRequestButton';
 import requestsList from '../mock-data.json';
+import ViewRequest from './ViewRequest';
 
 /* Similar to LoginForm.js & App.js, 
 in Maintenance there should be 
@@ -64,13 +65,13 @@ const Maintenance = () => {
       render: (_, record) =>
         record.status === "Open" ? (
           <Space size="large">
-            <a >View</a>
+            <ViewRequest info={record} />
             <a style={{ fontSize: 14, fontWeight: 600, padding: 0 }}>Edit</a>
             <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.requestId)}>
               <a style={{ fontSize: 14, fontWeight: 600, padding: 0 }}>Delete</a>
             </Popconfirm>
           </Space>
-      ) : (<a >View</a>),
+      ) : (<ViewRequest info={record} />),
     },
   ];
 

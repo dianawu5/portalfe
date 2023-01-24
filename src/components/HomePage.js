@@ -19,30 +19,24 @@ const items = [
         
     },];
 
+const SwitchPage = ({current}) => {
+    switch (current) {           
+        case "maintenance":
+            return <Maintenance />;
+            return <Bills />;
+        default:
+            return <Announcements />;
+    }  
+};
+
 const HomePage = () => {
 
-    const[current, setCurrent] = useState();
-
-    useEffect(() =>{
-        setCurrent('announcements');
-    },[]);
+    const[current, setCurrent] = useState('announcements');
 
     const onItemClick = (e) => {
         setCurrent(e.key);
     };
 
-    // change to the selected component
-    // later will be changed to <Maintenance />; <Bills />; <Announcement />
-    const switchPage = () => {
-        switch (current) {           
-            case "maintenance":
-                return <Maintenance />;
-            case "bills": 
-                return <Bills />;
-            default:
-                return <Announcements />;
-        }  
-    };
     return (
         <div style={{ fontSize: 20, fontWeight: 600 }}>
             <div style={{paddingLeft:"50%", 
@@ -58,7 +52,7 @@ const HomePage = () => {
             />
             </div>
             <div style={{paddingLeft: "30px", paddingRight:"30px", paddingTop:"10px"}}>
-                {switchPage()}
+                <SwitchPage current={current} />
             </div>
         </div>
     );

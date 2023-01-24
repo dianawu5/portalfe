@@ -23,6 +23,7 @@ const SwitchPage = ({current}) => {
     switch (current) {           
         case "maintenance":
             return <Maintenance />;
+        case "bills":
             return <Bills />;
         default:
             return <Announcements />;

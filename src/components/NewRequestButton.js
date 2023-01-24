@@ -5,7 +5,7 @@ import { newRequest } from '../utils';
 
 const { Option } = Select;
 
-const NewRequestButton = ({onSubmitRequestSuccess}) => {
+const NewRequestButton = ({}) => {
     const [loading, setLoading] = useState(false);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,7 +24,6 @@ const NewRequestButton = ({onSubmitRequestSuccess}) => {
             await newRequest(data);
             message.success("Submit new maintenance request successfully!");
             setIsModalOpen(false);
-            onSubmitRequestSuccess();
         } catch(error) {
             message.error(error.message);
         } finally {
@@ -37,7 +36,7 @@ const NewRequestButton = ({onSubmitRequestSuccess}) => {
             <Button type="primary" onClick={showModal} size="large" >
                 + New Maintenance Requst
             </Button>
-            <Modal title="Start a new maintenance request" open={isModalOpen} onCancel={handleCancel} footer={null}>
+            <Modal title="Start a new maintenance request" open={isModalOpen} onCancel={handleCancel} footer={null} destroyOnClose={true}>
                 <Form labelCol={{span: 8}} wrapperCol={{span: 16}} 
                     style={{maxWidth: 600}} onFinish={onFormSubmit}
                 >
@@ -47,7 +46,7 @@ const NewRequestButton = ({onSubmitRequestSuccess}) => {
                             required: true,
                             message: "Please input your request title!",
                             },]} >
-                        <Input disabled={loading} placeholder="Request Title" />
+                        <Input disabled={loading} placeholder="Request Title" showCount maxLength={40}/>
                     </Form.Item>
                     <Form.Item name="category" label="Category"
                         rules={[{required: true, message: "Please select a category!"}]}
@@ -64,15 +63,12 @@ const NewRequestButton = ({onSubmitRequestSuccess}) => {
                     <Form.Item name="description" label="Description"
                         rules={[{required: true, message: "Please povide a description to help us get more details."}]}
                     >
-                        <Input.TextArea style={{height: 150}} />
+                        <Input.TextArea style={{height: 150}} showCount maxLength={400}/>
                     </Form.Item>
                     <Form.Item wrapperCol={{offset: 8, span: 16}}>
                         <Space size="large">
                         <Button loading={loading} type="primary" htmlType="submit">
                             Submit
-                        </Button>
-                        <Button htmlType="reset" >
-                            Clear
                         </Button>
                         </Space>
                     </Form.Item>

@@ -2,6 +2,7 @@
     {
       "requestId":"1",
       "title":"roof is broken",
+      "category":"Cleaning",
       "date":"12/01/2020",
       "description": "The roof is somehow broken. Please fix it.",
       "status":"Approved"
@@ -10,26 +11,30 @@
       "requestId":"3",
       "title":"roof is broken",
       "date":"11/01/2020",
+      "category":"Electrical",
       "description": "The roof is somehow broken. Please fix it.",
       "status":"Approved"
     },
     {
       "requestId":"2",
       "title":"roof is broken",
+      "category":"Cleaning",
       "date":"12/01/2021",
-      "description": "The roof is somehow broken. Please fix it.",
+      "description": "The roof is somehow broken.Please fix it. The roof is somehow broken. Please fix it. The roof is somehow broken. Please fix it. The roof is somehow broken. Please fix it. ",
       "status":"Open"
     },
     {
         "requestId":"12",
         "title":"roof is broken",
         "date":"12/01/2021",
+        "category":"Other",
         "description": "The roof is somehow broken. Please fix it.",
         "status":"Open"
     },
     {
         "requestId":"10",
         "title":"roof is broken",
+        "category":"Plumbing",
         "date":"12/01/2021",
         "description": "The roof is somehow broken. Please fix it.",
         "status":"Closed"
@@ -37,6 +42,7 @@
     {
         "requestId":"9",
         "title":"roof is broken",
+        "category":"Internet",
         "date":"12/01/2021",
         "description": "The roof is somehow broken. Please fix it.",
         "status":"Closed"
@@ -44,6 +50,7 @@
     {
         "requestId":"10",
         "title":"roof is broken",
+        "category":"Cleaning",
         "date":"12/01/2021",
         "description": "The roof is somehow broken. Please fix it.",
         "status":"Open"
@@ -51,6 +58,7 @@
     {
         "requestId":"6",
         "title":"roof is broken",
+        "category":"Internet",
         "date":"12/01/2021",
         "description": "The roof is somehow broken. Please fix it.",
         "status":"Open"

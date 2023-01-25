@@ -19,20 +19,22 @@ const items = [
         
     },];
 
-const SwitchPage = ({current}) => {
-    switch (current) {           
-        case "maintenance":
-            return <Maintenance />;
-        case "bills":
-            return <Bills />;
-        default:
-            return <Announcements />;
-    }  
-};
+
 
 const HomePage = () => {
 
     const[current, setCurrent] = useState('announcements');
+
+    const SwitchPage = () => {
+        switch (current) {           
+            case "maintenance":
+                return <Maintenance />;
+            case "bills":
+                return <Bills />;
+            default:
+                return <Announcements />;
+        }  
+    };
 
     const onItemClick = (e) => {
         setCurrent(e.key);
@@ -53,7 +55,7 @@ const HomePage = () => {
             />
             </div>
             <div style={{paddingLeft: "30px", paddingRight:"30px", paddingTop:"10px"}}>
-                <SwitchPage current={current} />
+                <SwitchPage />
             </div>
         </div>
     );

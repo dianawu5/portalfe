@@ -1,5 +1,5 @@
 import { Menu } from 'antd';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Announcements from './Annoncements';
 import Maintenance from './Maintenance';
 import Bills from './Bills';
@@ -19,30 +19,27 @@ const items = [
         
     },];
 
+
+
 const HomePage = () => {
 
-    const[current, setCurrent] = useState();
+    const[current, setCurrent] = useState('announcements');
 
-    useEffect(() =>{
-        setCurrent('announcements');
-    },[]);
-
-    const onItemClick = (e) => {
-        setCurrent(e.key);
-    };
-
-    // change to the selected component
-    // later will be changed to <Maintenance />; <Bills />; <Announcement />
-    const switchPage = () => {
+    const SwitchPage = () => {
         switch (current) {           
             case "maintenance":
                 return <Maintenance />;
-            case "bills": 
+            case "bills":
                 return <Bills />;
             default:
                 return <Announcements />;
         }  
     };
+
+    const onItemClick = (e) => {
+        setCurrent(e.key);
+    };
+
     return (
         <div style={{ fontSize: 20, fontWeight: 600 }}>
             <div style={{paddingLeft:"50%", 
@@ -58,7 +55,7 @@ const HomePage = () => {
             />
             </div>
             <div style={{paddingLeft: "30px", paddingRight:"30px", paddingTop:"10px"}}>
-                {switchPage()}
+                <SwitchPage />
             </div>
         </div>
     );

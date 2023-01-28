@@ -35,7 +35,7 @@ const SignupButton = () => {
                 Sign Up
             </Button>
 
-            <Modal title="Sign Up" onCancel={handleCancel} footer={null} open={isModalOpen}>
+            <Modal title="Sign Up" onCancel={handleCancel} footer={null} open={isModalOpen} destroyOnClose={true}>
                 <Form 
                     labelCol={{
                         span: 7,
@@ -45,7 +45,6 @@ const SignupButton = () => {
                         span: 14,
                     }}
                     layout="horizontal" 
-                    form = {form}
                     onFinish={onFormSubmit}
                 >
                     <Form.Item 
@@ -123,9 +122,6 @@ const SignupButton = () => {
                         <Space size="large">
                             <Button loading={loading} type="primary" htmlType="submit" >
                                 Sign Up
-                            </Button>
-                            <Button htmlType="reset">
-                                Reset
                             </Button>
                         </Space>
                     </Form.Item>

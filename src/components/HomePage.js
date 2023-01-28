@@ -1,5 +1,5 @@
 import { Menu } from 'antd';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Announcements from './Annoncements';
 import Maintenance from './Maintenance';
 import Bills from './Bills';
@@ -37,7 +37,6 @@ const HomePage = () => {
     const onItemClick = (e) => {
         setCurrent(e.key);
     };
-    
     return (
         <div style={{ fontSize: 20, fontWeight: 600 }}>
             <div style={{paddingLeft:"50%", 

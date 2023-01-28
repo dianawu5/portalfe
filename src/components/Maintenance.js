@@ -5,7 +5,7 @@ import NewRequestButton from './NewRequestButton';
 import requestsList from '../mock-data.json';
 import ViewRequest from './ViewRequest';
 import EditRequest from './EditRequest';
-
+import React from 'react';
 
 /* Similar to LoginForm.js & App.js, 
 in Maintenance there should be 

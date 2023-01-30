@@ -1,44 +1,43 @@
 [
-    {
+  {
+      "invoiceId":"11",
+      "invoiceDate":"12/01/2022",
+      "dueDate":"12/31/2022",
+      "invoiceAmount":200,
+      "status":"unpaid",
+      "description": "Internet fee for this December 2022."
+    
+  },
+  {
       "invoiceId":"10",
-      "title":"November Rent at 888 ABC st, Palo Alto",
-      "date":"02/01/2021",
-      "status":"Unpaid"
-    },
-    {
-      "invoiceId":"9",
-      "title":"November Rent at 888 ABC st, Palo Alto",
-      "date":"01/01/2021",
-      "status":"In Process"
-    },
-    {
-      "invoiceId":"8",
-      "title":"November Rent at 888 ABC st, Palo Alto",
-      "date":"12/01/2020",
-      "status":"Paid"
-    },
-    {
-      "invoiceId":"7",
-      "title":"November Rent at 888 ABC st, Palo Alto",
-      "date":"11/01/2020",
-      "status":"Paid"
-    },
-    {
-      "invoiceId":"6",
-      "title":"November Rent at 888 ABC st, Palo Alto",
-      "date":"10/01/2020",
-      "status":"Paid"
-    },
-    {
+      "invoiceDate":"11/15/2022",
+      "dueDate":"12/15/2022",
+      "invoiceAmount":100,
+      "status":"paid",
+      "description": "Service fee for apartment cleaning service done on 11/14/2022."
+  },
+  {
+      "invoiceId":"12",
+      "invoiceDate":"12/11/2022",
+      "dueDate":"01/10/2023",
+      "invoiceAmount":600,
+      "status":"unpaid",
+      "description": "Service fee for apartment garbage disposals replacement work done on 12/10/2022."
+  },
+  {
+      "invoiceId":"1",
+      "invoiceDate":"02/01/2022",
+      "dueDate":"02/22/2022",
+      "invoiceAmount":100,
+      "status":"paid",
+      "description": "Service fee for apartment cleaning service done on 01/31/2022"
+  },
+  {
       "invoiceId":"5",
-      "title":"November Rent at 888 ABC st, Palo Alto",
-      "date":"09/01/2020",
-      "status":"Paid"
-    },
-    {
-      "invoiceId":"4",
-      "title":"November Rent at 888 ABC st, Palo Alto",
-      "date":"08/01/2020",
-      "status":"Paid"
-    }
-  ]
+      "invoiceDate":"07/01/2022",
+      "dueDate":"07/31/2022",
+      "invoiceAmount":200,
+      "status":"paid",
+      "description": "Fee for pest-controll services done on 6/30/2022."
+  }
+]

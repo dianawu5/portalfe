@@ -1,7 +1,7 @@
+import React from 'react';
 import { Form,Modal} from "antd";
 import FormItem from "antd/es/form/FormItem";
 import { useState } from "react";
-import React from 'react';
 
 const ViewRequest = ({info}) => {
     const[isModalOpen, setIsModalOpen] = useState(false);
@@ -12,14 +12,14 @@ const ViewRequest = ({info}) => {
     const handleModalCancel = () => {
         setIsModalOpen(false);
     };
-
+    
     return(
         <>
         <a type="link" onClick={showModal}>
             View
         </a>
         <Modal title="View Request Details" open={isModalOpen} onCancel={handleModalCancel} footer={null}>
-            <Form labelCol={{span: 6}} wrapperCol={{span: 18}}
+            <Form labelCol={{span: 6}} wrapperCol={{span: 18}} 
                 style={{maxWidth: 600}} size="middle"
             >
                 <FormItem name="requestId" label="Request#">

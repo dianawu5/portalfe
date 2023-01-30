@@ -1,4 +1,4 @@
-Code to be changed upon received the server domain from back end.
+#Code to be changed upon received the server domain from back end.
 
 ## Maintenance.js
 

@@ -22,9 +22,9 @@
    setLoading(false);  
     }
    };
-3. replace "<EditRequest info={record}/>" by:
-   "<EditRequest info={record} onEditSuccess={handleGetData}/>"
-4. replace "<NewRequestButton />" by "<NewRequestButton onSubmitSuccess={handleGetData}/>”
+3. replace <EditRequest info={record}/> by:
+   <EditRequest info={record} onEditSuccess={handleGetData}/>
+4. replace <NewRequestButton /> by <NewRequestButton onSubmitSuccess={handleGetData}/>
 
 ### Add code
 

@@ -3,7 +3,6 @@ import requestsList from '../mock-bills.json';
 import { Button, message, Space, Table, Popconfirm, Modal,} from 'antd';
 import { useEffect, useState } from 'react';
 import PayBill from './PayBill';
-import ViewBill from './ViewBill';
 
 const Bills = () => {
 

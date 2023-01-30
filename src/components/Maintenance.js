@@ -9,7 +9,7 @@ import EditRequest from './EditRequest';
 
 /* Similar to LoginForm.js & App.js, 
 in Maintenance there should be 
-(1) a function to refresh/reload the server data, such as const handleSuccess= () => {"code to reload updated data"}
+
 (2) in the return block, <NewRequestButton onSubmitSuccess={handleSuccess}/>
 
 in NewRequestButton.js, there should be 
@@ -107,32 +107,39 @@ export default Maintenance;
 
 /* once connected to the server use this coding
 
-  const[data, setData] = useState();
+  const[loading, setLoading] = useState();
   useEffect(() => {
-    handleDataLoading();  
-  }, []);
+    handleGetData();  
+  },[]); 
 
-  const handleDataLoading = async() => {
+  const handleGetData() = async() => {
     setLoading(true);
     try {
-      const resp = await getRequests();
+      const resp const resp = await getRequests();
       setData(resp);
     } catch(error) {
       message.error(error.message);
     } finally {
       setLoading(false);
-    }
-  };
+  }
 
   const handleDelete = async(requestId) => {
     setLoading(true); 
     try{
       await deleteRequest(requestId);
       message.success("You delete a reqeust successfully!");
+      handleGetData();
     } catch (error) {
       message.error(error.message);
     } finally {
-      setLoading(false);
+      setLoading(false);  
     }
   };
+
+
+  for <EditRequest info={record}/>
+  should changed to <EditRequest info={record} onEditSuccess={handleGetData}/>
+
+  for <NewRequestButton />
+  should changed to <NewRequestButton onSubmitSuccess={handleGetData}/>
 */ 

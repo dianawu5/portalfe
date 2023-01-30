@@ -4,6 +4,9 @@ import { Option } from "antd/lib/mentions";
 import { useState } from "react";
 import { updateRequest } from "../utils";
 
+
+
+// once connected to server, change to ({info, onEditSuccess}) ; call onEditSuccess after updateRequest(data) success.
 const EditRequest = ({info}) => {
     const [loading, setLoading] = useState(false);
     const[isModalOpen, setIsModalOpen]=useState(false);
@@ -20,6 +23,7 @@ const EditRequest = ({info}) => {
         try {
             await updateRequest(data);
             message.success("Request is updated successfully!");
+//          onEditSuccess();
             setIsModalOpen(false);
         } catch (error) {
             message.error(error.message);

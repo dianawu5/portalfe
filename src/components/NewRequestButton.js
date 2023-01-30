@@ -3,7 +3,9 @@ import { useState } from 'react';
 import { newRequest } from '../utils';
 
 
-const { Option } = Select;
+const { Option } = Select; // keep this.
+
+// once connected to server, change to ({onSubmitSuccess}) ; call onSubmitSuccess after newRequest(data) success.
 
 const NewRequestButton = ({}) => {
     const [loading, setLoading] = useState(false);

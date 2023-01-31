@@ -1,6 +1,6 @@
 import { Menu } from 'antd';
 import { useState } from 'react';
-import Announcements from './Annoncements';
+import Announcements from './Announcements';
 import Maintenance from './Maintenance';
 import Bills from './Bills';
 

@@ -45,15 +45,15 @@ const Maintenance = () => {
       filters:[
         {
           text: "open",
-          value:"open",
+          value:"Open",
         },
         {
           text:"closed",
-            value:"closed",
+          value:"Closed",
         },
         {
           text:"approved",
-            value:"approved",
+            value:"Approved",
         },
       ],
       onFilter: (value, record) => record.status.indexOf(value) === 0,

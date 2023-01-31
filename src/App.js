@@ -19,7 +19,14 @@ function App() {
     const authToken = localStorage.getItem("authToken");
     setAuthed(authToken !== null);
   },[]);
-
+/*
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    if (query.get("success")) {
+      message.success("Payment is made successfully!");
+    }
+  },[]);
+*/
   const handleLogOut = () =>{
     localStorage.removeItem("authToken");
     setAuthed(false);

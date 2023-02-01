@@ -149,7 +149,7 @@ export const newRequest = (data) => {
 // update an existing maintenance request
 export const updateRequest = (data) => {
     const authToken = localStorage.getItem("authToken");
-    const url = `${domain}/maintenance/updaterequest`;
+    const url = `${domain}/updaterequest`;
 
     return fetch(url, {
         method: "POST",

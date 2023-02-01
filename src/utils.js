@@ -65,7 +65,7 @@ export const signup = (credential) => {
 // get a list of annoucement
 export const getAnnouncements = () => {
     const authToken = localStorage.getItem("authToken");
-    const url = `${domain}/announcements`;
+    const url = `${domain}/announcement`;
     return fetch(url, {
         method: "GET",
         headers: {
@@ -115,7 +115,7 @@ export const payBill = (invoiceId) => {
 // get a list of maintenance requests
 export const getRequests = () => {
     const authToken = localStorage.getItem("authToken");
-    const url = `${domain}/requests`;
+    const url = `${domain}/maintenance`;
 
     return fetch(url, {
         method: "GET",
@@ -131,7 +131,7 @@ export const getRequests = () => {
 // submit a new maintenance request
 export const newRequest = (data) => {
     const authToken = localStorage.getItem("authToken");
-    const url = `${domain}/newrequest`;
+    const url = `${domain}/maintenance/newrequest`;
 
     return fetch(url, {
         method: "POST",
@@ -149,7 +149,7 @@ export const newRequest = (data) => {
 // update an existing maintenance request
 export const updateRequest = (data) => {
     const authToken = localStorage.getItem("authToken");
-    const url = `${domain}/updaterequest`;
+    const url = `${domain}/maintenance/updaterequest`;
 
     return fetch(url, {
         method: "POST",
@@ -166,7 +166,7 @@ export const updateRequest = (data) => {
 // delete an existing maintenance request
 export const deleteRequest = (requestId) => {
     const authToken = localStorage.getItem("authToken");
-    const url = `${domain}/request/${requestId}`;
+    const url = `${domain}/maintenance/${requestId}`;
 
     return fetch(url, {
         method: "POST",

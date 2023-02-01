@@ -100,9 +100,10 @@ export const payBill = (invoiceId) => {
     const url = `${domain}/checkout?invoiceId={invoiceId}`;
 
     return fetch(url, {
-        method: "GET",
+        method: "POST",
         headers: {
             Authorization: `Bearer ${authToken}`,
+            "Content-Type": "application/json",
         },
     }).then((response) => {
         handleResponseStatus(response, "Fail to accept payment request.");

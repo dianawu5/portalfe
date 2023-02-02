@@ -96,6 +96,7 @@ export const getBills = () => {
 
 // make a payment to a bill
 export const payBill = (invoiceId) => {
+    console.log("you click paybills for invoice#", invoiceId);
     const authToken = localStorage.getItem("authToken");
     const url = `${domain}/checkout?invoiceId={invoiceId}`;
 
@@ -110,6 +111,7 @@ export const payBill = (invoiceId) => {
     }).then((redirectUrl) => {
         window.location = redirectUrl;
     });
+    
 };
 
 // get a list of maintenance requests
@@ -130,6 +132,7 @@ export const getRequests = () => {
 
 // submit a new maintenance request
 export const newRequest = (data) => {
+    console.log("you submitted new request, the title is: ", data.title);
     const authToken = localStorage.getItem("authToken");
     const url = `${domain}/newrequest`;
 
@@ -148,6 +151,7 @@ export const newRequest = (data) => {
 
 // update an existing maintenance request
 export const updateRequest = (data) => {
+    console.log("you updated request ", data.requestId);
     const authToken = localStorage.getItem("authToken");
     const url = `${domain}/updaterequest`;
 
@@ -165,6 +169,7 @@ export const updateRequest = (data) => {
 
 // delete an existing maintenance request
 export const deleteRequest = (requestId) => {
+    console.log("you delete request ", requestId);
     const authToken = localStorage.getItem("authToken");
     const url = `${domain}/request/${requestId}`;
 

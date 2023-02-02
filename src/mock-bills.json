@@ -1,0 +1,84 @@
+[
+    {
+        "invoiceId":"11",
+        "invoiceDate":"12/01/2022",
+        "dueDate":"12/31/2022",
+        "invoiceAmount":200,
+        "status":"unpaid",
+        "description": "Internet fee for this December 2022."
+      
+    },
+    {
+        "invoiceId":"10",
+        "invoiceDate":"11/15/2022",
+        "dueDate":"12/15/2022",
+        "invoiceAmount":100,
+        "status":"paid",
+        "description": "Service fee for apartment cleaning service done on 11/14/2022."
+    },
+    {
+        "invoiceId":"12",
+        "invoiceDate":"12/11/2022",
+        "dueDate":"01/10/2023",
+        "invoiceAmount":600,
+        "status":"unpaid",
+        "description": "Service fee for apartment garbage disposals replacement work done on 12/10/2022."
+    },
+    {
+        "invoiceId":"9",
+        "invoiceDate":"11/11/2022",
+        "dueDate":"12/11/2022",
+        "invoiceAmount":150,
+        "status":"unpaid",
+        "description": "Service fee for apartment cleaning work done on 11/10/2022."
+    },
+    {
+        "invoiceId":"6",
+        "invoiceDate":"02/01/2022",
+        "dueDate":"02/22/2022",
+        "invoiceAmount":100,
+        "status":"paid",
+        "description": "Service fee for apartment cleaning service done on 01/31/2022"
+    },
+    {
+        "invoiceId":"7",
+        "invoiceDate":"03/01/2022",
+        "dueDate":"03/31/2022",
+        "invoiceAmount":200,
+        "status":"paid",
+        "description": "Internet fee for this March 2022."
+      
+    },
+    {
+        "invoiceId":"4",
+        "invoiceDate":"11/15/2021",
+        "dueDate":"12/15/2021",
+        "invoiceAmount":100,
+        "status":"paid",
+        "description": "Service fee for apartment cleaning service done on 11/14/2021."
+    },
+    {
+        "invoiceId":"3",
+        "invoiceDate":"10/15/2021",
+        "dueDate":"10/15/2021",
+        "invoiceAmount":100,
+        "status":"paid",
+        "description": "Service fee for apartment cleaning service done on 10/14/2021."
+    },
+    {
+        "invoiceId":"2",
+        "invoiceDate":"12/11/2021",
+        "dueDate":"01/10/2022",
+        "invoiceAmount":60,
+        "status":"paid",
+        "description": "Service fee for apartment lightbulb replacement work done on 12/10/2021."
+    },
+    {
+        "invoiceId":"5",
+        "invoiceDate":"07/01/2022",
+        "dueDate":"07/31/2022",
+        "invoiceAmount":200,
+        "status":"paid",
+        "description": "Fee for pest-controll services done on 6/30/2022."
+    }
+  ]

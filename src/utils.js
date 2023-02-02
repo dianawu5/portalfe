@@ -98,7 +98,7 @@ export const getBills = () => {
 export const payBill = (invoiceId) => {
     console.log("you click paybills for invoice#", invoiceId);
     const authToken = localStorage.getItem("authToken");
-    const url = `${domain}/checkout?invoiceId={invoiceId}`;
+    const url = `${domain}/checkout?invoiceId=${invoiceId}`;
 
     return fetch(url, {
         method: "POST",
@@ -172,7 +172,7 @@ export const updateRequest = (data) => {
 export const deleteRequest = (requestId) => {
     console.log("you delete request ", requestId);
     const authToken = localStorage.getItem("authToken");
-    const url = `${domain}/maintenanceUpdate?requestId={requestId}`;
+    const url = `${domain}/maintenanceUpdate?requestId=${requestId}`;
 
     return fetch(url, {
         method: "POST",

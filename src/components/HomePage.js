@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Announcements from './Announcements';
 import Maintenance from './Maintenance';
 import Bills from './Bills';
+import Contacts from './Contacts';
 
 const items = [
     {
@@ -17,7 +18,12 @@ const items = [
         label: 'Bills',
         key: 'bills',
         
-    },];
+    },
+    {
+        label: 'Contact Us',
+        key: 'contacts',
+    },
+];
 
 const TogglePage = ({current}) => {
     switch (current) {           
@@ -25,6 +31,8 @@ const TogglePage = ({current}) => {
             return <Maintenance />;
         case "bills": 
             return <Bills />;
+        case "contacts":
+            return <Contacts />;
         default:
             return <Announcements />;
     }  

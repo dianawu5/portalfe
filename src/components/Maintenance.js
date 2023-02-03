@@ -9,7 +9,7 @@ import EditRequest from './EditRequest';
 
 /* Similar to LoginForm.js & App.js, 
 in Maintenance there should be 
-(1) a function to refresh/reload the server data, such as const handleSuccess= () => {"code to reload updated data"}
+
 (2) in the return block, <NewRequestButton onSubmitSuccess={handleSuccess}/>
 
 in NewRequestButton.js, there should be 
@@ -22,6 +22,7 @@ and
 
 const Maintenance = () => {
 
+  const[loading, setLoading] = useState();
   const[data, setData]=useState(requestsList);
 
   // to define each column
@@ -45,15 +46,15 @@ const Maintenance = () => {
       filters:[
         {
           text: "open",
-          value:"open",
+          value:"Open",
         },
         {
           text:"closed",
-            value:"closed",
+          value:"Closed",
         },
         {
           text:"approved",
-            value:"approved",
+            value:"Approved",
         },
       ],
       onFilter: (value, record) => record.status.indexOf(value) === 0,
@@ -76,9 +77,34 @@ const Maintenance = () => {
     },
   ];
 
-  const handleDelete = (requestId) => {
-    const newData = data.filter((item) => item.requestId !== requestId);
-    setData(newData);
+  // useEffect(() => {
+  //   handleGetData();  
+  // },[]); 
+
+  // const handleGetData() = async() => {
+  //   setLoading(true);
+  //   try {
+  //     const resp const resp = await getRequests();
+  //     setData(resp);
+  //   } catch(error) {
+  //     message.error(error.message);
+  //   } finally {
+  //     setLoading(false);
+  // }
+  const handleDelete = async(requestId) => {
+    const newData = data.filter((item) => item.requestId !== requestId); // Will be deleted once connected to server
+    setData(newData);// Will be deleted once connected to server
+    
+    setLoading(true); 
+    try{
+      await deleteRequest(requestId);
+      message.success("You delete a reqeust successfully!");
+      // handleGetData();
+    } catch (error) {
+      message.error(error.message);
+    } finally {
+      setLoading(false);  
+    }    
   };
 
 
@@ -107,32 +133,39 @@ export default Maintenance;
 
 /* once connected to the server use this coding
 
-  const[data, setData] = useState();
+  const[loading, setLoading] = useState();
   useEffect(() => {
-    handleDataLoading();  
-  }, []);
+    handleGetData();  
+  },[]); 
 
-  const handleDataLoading = async() => {
+  const handleGetData() = async() => {
     setLoading(true);
     try {
-      const resp = await getRequests();
+      const resp const resp = await getRequests();
       setData(resp);
     } catch(error) {
       message.error(error.message);
     } finally {
       setLoading(false);
-    }
-  };
+  }
 
   const handleDelete = async(requestId) => {
     setLoading(true); 
     try{
       await deleteRequest(requestId);
       message.success("You delete a reqeust successfully!");
+      handleGetData();
     } catch (error) {
       message.error(error.message);
     } finally {
-      setLoading(false);
+      setLoading(false);  
     }
   };
+
+
+  for <EditRequest info={record}/>
+  should changed to <EditRequest info={record} onEditSuccess={handleGetData}/>
+
+  for <NewRequestButton />
+  should changed to <NewRequestButton onSubmitSuccess={handleGetData}/>
 */ 

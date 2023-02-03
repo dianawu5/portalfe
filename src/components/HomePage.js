@@ -1,6 +1,6 @@
 import { Menu } from 'antd';
 import { useState } from 'react';
-import Announcements from './Annoncements';
+import Announcements from './Announcements';
 import Maintenance from './Maintenance';
 import Bills from './Bills';
 
@@ -19,27 +19,24 @@ const items = [
         
     },];
 
-
+const TogglePage = ({current}) => {
+    switch (current) {           
+        case "maintenance":
+            return <Maintenance />;
+        case "bills": 
+            return <Bills />;
+        default:
+            return <Announcements />;
+    }  
+};
 
 const HomePage = () => {
 
-    const[current, setCurrent] = useState('announcements');
-
-    const SwitchPage = () => {
-        switch (current) {           
-            case "maintenance":
-                return <Maintenance />;
-            case "bills":
-                return <Bills />;
-            default:
-                return <Announcements />;
-        }  
-    };
+    const[current, setCurrent] = useState("announcement");
 
     const onItemClick = (e) => {
         setCurrent(e.key);
     };
-
     return (
         <div style={{ fontSize: 20, fontWeight: 600 }}>
             <div style={{paddingLeft:"50%", 
@@ -55,7 +52,7 @@ const HomePage = () => {
             />
             </div>
             <div style={{paddingLeft: "30px", paddingRight:"30px", paddingTop:"10px"}}>
-                <SwitchPage />
+            <TogglePage current={current}/>
             </div>
         </div>
     );

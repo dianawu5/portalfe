@@ -16,10 +16,15 @@ const ViewAnnouncement = ({info}) => {
         <a type="link" onClick={showModal}>
             View
         </a>
-        <Modal title="View Announcement" open={isModalOpen} onCancel={handleModalCancel} footer={null}>
-            <h1>this is an announcement</h1>
+        <Modal title="Announcement" open={isModalOpen} onCancel={handleModalCancel} footer={null}>
+            <h1>{info.title}</h1>
+            <span>Category: {info.category}</span>
+            <br></br>
+            <span>Time: <time>{info.date}</time></span>
+            <br></br>
+            <br></br>
             <p>
-                {info.title}
+                {info.description}
             </p>
         </Modal>
         </>

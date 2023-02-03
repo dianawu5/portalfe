@@ -17,7 +17,7 @@ const ViewBill = ({info}) => {
         <a type="link" onClick={showModal}>
             View
         </a>
-        <Modal title="View Request Details" open={isModalOpen} onCancel={handleModalCancel} footer={null}>
+        <Modal title="View Bill Details" open={isModalOpen} onCancel={handleModalCancel} footer={null}>
             <Form labelCol={{span: 6}} wrapperCol={{span: 18}} 
                 style={{maxWidth: 600}} size="middle"
             >

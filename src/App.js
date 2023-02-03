@@ -1,24 +1,16 @@
-import { Layout, Dropdown, Menu, Button } from "antd";
+import { Layout, Dropdown, Menu, Button, message } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
-// import LoginForm from "./components/LoginForm";
+import LoginForm from "./components/LoginForm";
 import HomePage from "./components/HomePage";
+import { logout } from "./utils";
 
-/*
-To see the login and logout feature, 
-please uncomment the codes in renderContent 
-and change the true to "authed" in Header
-*/
 const { Header, Content, Footer } = Layout;
 
 function App() {
   
-  const[authed, setAuthed] = useState(false);
+  const[loggedIn, setLoggedIn] = useState(true);// changed to false later
 
-  useEffect(() => {
-    const authToken = localStorage.getItem("authToken");
-    setAuthed(authToken !== null);
-  },[]);
 /*
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
@@ -27,9 +19,14 @@ function App() {
     }
   },[]);
 */
-  const handleLogOut = () =>{
-    localStorage.removeItem("authToken");
-    setAuthed(false);
+  const handleLogOut = async() =>{
+    try{
+      await logout();
+      setLoggedIn(false);
+      message.success("You logged out successfully!")
+    } catch (error) {
+      message.error(error.message);
+    }
   };
 
   const userMenu = (
@@ -41,17 +38,15 @@ function App() {
   );
 
   const handleLoginSuccess = () => {
-    setAuthed(true);
+    setLoggedIn(true);
   }
 
   const renderContent = () => {
-/*   if (authed === undefined) {
-      return <></>;
-    }
-    if (!authed) {
+  
+    if (!loggedIn) {
       return<LoginForm onLoginSuccess={handleLoginSuccess} />;
     }
-*/    
+  
     return <HomePage />;
   };
 
@@ -63,7 +58,7 @@ function App() {
         <div style={{ fontSize: 20, fontWeight: 600, color: "white" }}>
           Community Portal  
         </div>
-        {true && ( // need to change to authed later
+        {loggedIn && ( 
           <div>
             <Dropdown trigger="click" overlay={userMenu} >
               <Button icon={<UserOutlined/>} shape="circle" />

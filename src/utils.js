@@ -18,7 +18,6 @@ const handleResponseStatus = (response, errMsg) => {
 
     // if token is invalid
     if (status === 401) {
-        localStorage.removeItem("authToken");
         window.location.reload();
         return;
     }
@@ -32,6 +31,7 @@ export const login = (credential) => {
     const url = `${domain}/login`;
     return fetch(url, {
         method: "POST",
+        credentials: "include",
         headers: {
             "Content-Type": "application/json",
         },
@@ -41,8 +41,6 @@ export const login = (credential) => {
             throw Error("Fail to log in.");
         }
         return response.text();
-    }).then((token) => {
-        localStorage.setItem("authToken", token);
     });
 };
 
@@ -62,15 +60,26 @@ export const signup = (credential) => {
     });
 };
 
+// log out
+export const logout = () => {
+    console.log("You clicked logout button")
+    const url = `${domain}/logout`;
+    
+    return fetch(url, {
+        method: "POST",
+        credentials: "include",
+    }).then((response) => {
+        handleResponseStatus(response, "Fail to log out.")
+    })
+};
+
 // get a list of annoucement
 export const getAnnouncements = () => {
-    const authToken = localStorage.getItem("authToken");
+    
     const url = `${domain}/announcement`;
     return fetch(url, {
         method: "GET",
-        headers: {
-            Authorization: `Bearer ${authToken}`,
-        },
+        credentials: "include",
     }).then((response) => {
         handleResponseStatus(response, "Fail to get the Announcement list.");
         return response.json();
@@ -80,14 +89,11 @@ export const getAnnouncements = () => {
 // get a list of bills
 export const getBills = () => {
 
-    const authToken = localStorage.getItem("authToken");
     const url = `${domain}/bills`;
 
     return fetch(url, {
         method: "GET",
-        headers: {
-            Authorization: `Bearer ${authToken}`,
-        },
+        credentials:"include",
     }).then((response) => {
         handleResponseStatus(response, "Fail to get the bills.");
         return response.json();
@@ -97,13 +103,13 @@ export const getBills = () => {
 // make a payment to a bill
 export const payBill = (invoiceId) => {
     console.log("you click paybills for invoice#", invoiceId);
-    const authToken = localStorage.getItem("authToken");
+
     const url = `${domain}/checkout?invoiceId=${invoiceId}`;
 
     return fetch(url, {
         method: "POST",
+        credentials:"include",
         headers: {
-            Authorization: `Bearer ${authToken}`,
             "Content-Type": "application/json",
         },
     }).then((response) => {
@@ -117,14 +123,11 @@ export const payBill = (invoiceId) => {
 
 // get a list of maintenance requests
 export const getRequests = () => {
-    const authToken = localStorage.getItem("authToken");
     const url = `${domain}/maintenance`;
 
     return fetch(url, {
         method: "GET",
-        headers: {
-            Authorization: `Bearer ${authToken}`,
-        },
+        credentials:"include",
     }).then((response) => {
         handleResponseStatus(response, "Fail to get the maintenance requests.");
         return response.json();
@@ -134,13 +137,13 @@ export const getRequests = () => {
 // submit a new maintenance request
 export const newRequest = (data) => {
     console.log("you submitted new request, the title is: ", data.title);
-    const authToken = localStorage.getItem("authToken");
+
     const url = `${domain}/maintenance`;
 
     return fetch(url, {
         method: "POST",
+        credentials:"include",
         headers: {
-            Authorization: `Bearer ${authToken}`,
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
@@ -153,13 +156,13 @@ export const newRequest = (data) => {
 // update an existing maintenance request
 export const updateRequest = (data) => {
     console.log("you updated request ", data.requestId);
-    const authToken = localStorage.getItem("authToken");
+
     const url = `${domain}/maintenanceUpdate`;
 
     return fetch(url, {
         method: "POST",
+        credentials:"include",
         headers: {
-            Authorization: `Bearer ${authToken}`,
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
@@ -171,14 +174,12 @@ export const updateRequest = (data) => {
 // delete an existing maintenance request
 export const deleteRequest = (requestId) => {
     console.log("you delete request ", requestId);
-    const authToken = localStorage.getItem("authToken");
+
     const url = `${domain}/maintenanceUpdate?requestId=${requestId}`;
 
     return fetch(url, {
         method: "POST",
-        headers: {
-            Authorization: `Bearer ${authToken}`,
-        },
+        credentials:"include",
     }).then((response) => {
         handleResponseStatus(response, "Fail to delete the request.");
     });

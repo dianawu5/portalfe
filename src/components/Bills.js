@@ -84,8 +84,7 @@ const Bills = () => {
             </div>
             <div style={{ fontSize: 20, fontWeight: 600,paddingLeft:"15%" }}>
                 <div style={{padding: "10px"}} align="end">
-                    <p>Outstanding Balance</p>
-                    <p>{formatter.format(unpaidTotalAmount)}</p>
+                    <div >Outstanding Balance: {formatter.format(unpaidTotalAmount)}</div>
                 </div>
                 <div style={{ padding:"5px",backgroundColor:"rgba(55, 88, 70,.1)"}}>
                     <div style={{ fontSize: 18, fontWeight: 600,padding:"5px",backgroundColor:"rgba(55, 88, 70,.1)"}}

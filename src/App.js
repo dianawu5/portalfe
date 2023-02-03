@@ -1,7 +1,7 @@
 import { Layout, Dropdown, Menu, Button } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
-import LoginForm from "./components/LoginForm";
+// import LoginForm from "./components/LoginForm";
 import HomePage from "./components/HomePage";
 
 /*

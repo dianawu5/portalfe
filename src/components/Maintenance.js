@@ -1,8 +1,7 @@
 import { Button, message, Space, Table, Popconfirm, Modal,} from 'antd';
 import { useEffect, useState } from 'react';
-import { deleteRequest } from '../utils';
+import { deleteRequest, getRequests } from '../utils';
 import NewRequestButton from './NewRequestButton';
-import requestsList from '../mock-data.json';
 import ViewRequest from './ViewRequest';
 import EditRequest from './EditRequest';
 
@@ -22,8 +21,8 @@ and
 
 const Maintenance = () => {
 
-  const[loading, setLoading] = useState();
-  const[data, setData]=useState(requestsList);
+  const[loading, setLoading] = useState(false);
+  const[data, setData]=useState([]);
 
   // to define each column
   const columns = [
@@ -68,7 +67,7 @@ const Maintenance = () => {
         record.status === "Open" ? (
           <Space size="large">
             <ViewRequest info={record} />
-            <EditRequest info={record} />
+            <EditRequest info={record} onEditSuccess = {handleGetData} />
             <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.requestId)}>
               <a style={{ fontSize: 14, fontWeight: 600, padding: 0 }}>Delete</a>
             </Popconfirm>
@@ -77,29 +76,29 @@ const Maintenance = () => {
     },
   ];
 
-  // useEffect(() => {
-  //   handleGetData();  
-  // },[]); 
+  useEffect(() => {
+    handleGetData();  
+  },[]); 
 
-  // const handleGetData() = async() => {
-  //   setLoading(true);
-  //   try {
-  //     const resp const resp = await getRequests();
-  //     setData(resp);
-  //   } catch(error) {
-  //     message.error(error.message);
-  //   } finally {
-  //     setLoading(false);
-  // }
+  const handleGetData = async() => {
+    setLoading(true);
+    try {
+      const resp = await getRequests();
+      setData(resp || []);
+    } catch(error) {
+      message.error(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleDelete = async(requestId) => {
-    const newData = data.filter((item) => item.requestId !== requestId); // Will be deleted once connected to server
-    setData(newData);// Will be deleted once connected to server
     
     setLoading(true); 
     try{
       await deleteRequest(requestId);
       message.success("You delete a reqeust successfully!");
-      // handleGetData();
+      handleGetData();
     } catch (error) {
       message.error(error.message);
     } finally {
@@ -115,7 +114,7 @@ const Maintenance = () => {
             </div>
             <div style={{ fontSize: 20, fontWeight: 600,paddingLeft:"15%" }}>
                 <div style={{padding: "10px"}} align="end">
-                  <NewRequestButton />
+                  <NewRequestButton onSubmitSuccess={handleGetData}/>
                 </div>
                 <div style={{ padding:"5px",backgroundColor:"rgba(55, 88, 70,.1)"}}>
                     <div style={{ fontSize: 18, fontWeight: 600,padding:"5px",backgroundColor:"rgba(55, 88, 70,.1)"}}
@@ -127,7 +126,7 @@ const Maintenance = () => {
             </div>
         </div>
     );
-}
+};
 
 export default Maintenance;
 

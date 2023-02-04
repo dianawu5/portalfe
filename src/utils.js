@@ -9,7 +9,7 @@ TODO:
 */
 
 
-const domain = "";  
+const domain = "https://p8xxr552ll.execute-api.us-east-1.amazonaws.com";  
 
 // handle the repsonse status returned from backend
 const handleResponseStatus = (response, errMsg) => {
@@ -31,7 +31,7 @@ export const login = (credential) => {
     const url = `${domain}/login`;
     return fetch(url, {
         method: "POST",
-        credentials: "include",
+        // credentials: "include",
         headers: {
             "Content-Type": "application/json",
         },
@@ -67,7 +67,7 @@ export const logout = () => {
     
     return fetch(url, {
         method: "POST",
-        credentials: "include",
+        // credentials: "include",
     }).then((response) => {
         handleResponseStatus(response, "Fail to log out.")
     })
@@ -79,7 +79,8 @@ export const getAnnouncements = () => {
     const url = `${domain}/announcement`;
     return fetch(url, {
         method: "GET",
-        credentials: "include",
+        
+        // credentials: "include",
     }).then((response) => {
         handleResponseStatus(response, "Fail to get the Announcement list.");
         return response.json();
@@ -93,7 +94,7 @@ export const getBills = () => {
 
     return fetch(url, {
         method: "GET",
-        credentials:"include",
+        // credentials:"include",
     }).then((response) => {
         handleResponseStatus(response, "Fail to get the bills.");
         return response.json();
@@ -107,18 +108,34 @@ export const payBill = (invoiceId) => {
     const url = `${domain}/checkout?invoiceId=${invoiceId}`;
 
     return fetch(url, {
-        method: "POST",
-        credentials:"include",
-        headers: {
-            "Content-Type": "application/json",
-        },
+        method: "GET",
+        // credentials:"include",
+
     }).then((response) => {
         handleResponseStatus(response, "Fail to accept payment request.");
-        return response.text();
+        return response.json();
     }).then((redirectUrl) => {
-        window.location = redirectUrl;
-    });
+        window.location=redirectUrl.stripe_url.toString()
+    }
+
+    )
+    // .then((redirectUrl) => {
+    //     window.location = redirectUrl;
+    // });
     
+};
+
+// once payment is made successfully
+export const paymentConfirm = () => {
+    const url = `${domain}/paymentConfirm`;
+    
+    return fetch(url, {
+        method: "GET",
+        credentials: "include",
+    }).then((response) => {
+        handleResponseStatus(response, "Fail to send the payment confirmation.");
+        return response.text();
+    });
 };
 
 // get a list of maintenance requests
@@ -127,7 +144,7 @@ export const getRequests = () => {
 
     return fetch(url, {
         method: "GET",
-        credentials:"include",
+        // credentials:"include",
     }).then((response) => {
         handleResponseStatus(response, "Fail to get the maintenance requests.");
         return response.json();
@@ -142,7 +159,7 @@ export const newRequest = (data) => {
 
     return fetch(url, {
         method: "POST",
-        credentials:"include",
+        // credentials:"include",
         headers: {
             "Content-Type": "application/json",
         },
@@ -161,7 +178,7 @@ export const updateRequest = (data) => {
 
     return fetch(url, {
         method: "POST",
-        credentials:"include",
+        // credentials:"include",
         headers: {
             "Content-Type": "application/json",
         },
@@ -179,7 +196,7 @@ export const deleteRequest = (requestId) => {
 
     return fetch(url, {
         method: "POST",
-        credentials:"include",
+        // credentials:"include",
     }).then((response) => {
         handleResponseStatus(response, "Fail to delete the request.");
     });

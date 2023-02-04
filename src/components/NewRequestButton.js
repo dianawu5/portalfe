@@ -7,7 +7,7 @@ const { Option } = Select; // keep this.
 
 // once connected to server, change to ({onSubmitSuccess}) ; call onSubmitSuccess after newRequest(data) success.
 
-const NewRequestButton = ({}) => {
+const NewRequestButton = ({onSubmitSuccess}) => {
     const [loading, setLoading] = useState(false);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,6 +26,7 @@ const NewRequestButton = ({}) => {
             await newRequest(data);
             message.success("Submit new maintenance request successfully!");
             setIsModalOpen(false);
+            onSubmitSuccess();
         } catch(error) {
             message.error(error.message);
         } finally {

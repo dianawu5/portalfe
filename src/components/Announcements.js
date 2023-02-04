@@ -1,11 +1,31 @@
-import { Table } from 'antd';
+import { message, Table } from 'antd';
 import { useEffect, useState } from 'react';
+import { getAnnouncements } from '../utils';
 import ViewAnnouncement from './ViewAnnouncement';
 
 const Announcements = () => {
-    let announcement = useAnnouncementList();
+    // let announcement = useAnnouncementList();
 
-    console.log(announcement);
+    // console.log(announcement);
+
+    const [loading, setLoading] = useState(false);
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+      handleGetData();
+    }, []);
+
+    const handleGetData = async() => {
+      setLoading(true);
+      try{
+        const resp = await getAnnouncements();
+        setData(resp || []);
+      } catch (error) {
+        message.error(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
     const columns = [
       {
@@ -33,21 +53,21 @@ const Announcements = () => {
                 Announcements
             </div>
             <div style={{ fontSize: 20, fontWeight: 600,paddingLeft:"15%" }}>
-            <Table dataSource={announcement} columns={columns} />
+            <Table dataSource={data} columns={columns} />
             </div>
         </div>
     );
 }
 
-const useAnnouncementList = () => {
+// const useAnnouncementList = () => {
 
-  const [announcementList, setAnnouncementList] = useState([]);
-  useEffect(() => {
-    import('../announcements-mock-data.json')
-    .then(lst => setAnnouncementList(lst.default))
-  }, []);
+//   const [announcementList, setAnnouncementList] = useState([]);
+//   useEffect(() => {
+//     import('../announcements-mock-data.json')
+//     .then(lst => setAnnouncementList(lst.default))
+//   }, []);
 
-  return announcementList
-}
+//   return announcementList
+// }
 
 export default Announcements;

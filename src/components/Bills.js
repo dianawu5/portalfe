@@ -1,14 +1,40 @@
-import { Space, Table} from 'antd';
+import { message, Space, Table} from 'antd';
 import { useEffect, useState } from 'react';
-import billData from "../mock-bills.json"
+// import billData from "../mock-bills.json"
 import ViewBill from './ViewBill';
-import { payBill } from '../utils';
+import { getBills, payBill, paymentConfirm } from '../utils';
 
 const Bills = () => {
 
-    const[data, setData]=useState(billData);
+    const[data, setData]=useState([]);
+    const[loading, setLoading] = useState(false);
     const unpaidTotalAmount = data.filter(data => data.status == "unpaid").map( data => data.invoiceAmount ).reduce((a,b)=> a + b, 0);
 
+    useEffect(() => {
+        handleGetData();
+    }, []);
+
+
+    // need to decide keep this one or the one in App.js 
+    // useEffect(() => {
+    //     const query = new URLSearchParams(window.location.search);
+    //     if (query.get("success")) {
+    //         paymentConfirm();
+    //         message.success("Payment is made successfully!");
+    //     }
+    //   },[]);
+
+    const handleGetData = async() => {
+        setLoading(true);
+        try{
+            const resp = await getBills();
+            setData(resp||[]);
+        } catch (error) {
+            message.error(error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
     const columns = [
         {
             title: 'Invoice#',

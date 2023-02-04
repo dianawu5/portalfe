@@ -6,8 +6,7 @@ import { updateRequest } from "../utils";
 
 
 
-// once connected to server, change to ({info, onEditSuccess}) ; call onEditSuccess after updateRequest(data) success.
-const EditRequest = ({info}) => {
+const EditRequest = ({info, onEditSuccess}) => {
     const [loading, setLoading] = useState(false);
     const[isModalOpen, setIsModalOpen]=useState(false);
     const defaultData = info;
@@ -23,8 +22,8 @@ const EditRequest = ({info}) => {
         try {
             await updateRequest(data);
             message.success("Request is updated successfully!");
-//          onEditSuccess();
             setIsModalOpen(false);
+            onEditSuccess();
         } catch (error) {
             message.error(error.message);
         } finally {

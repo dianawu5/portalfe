@@ -3,22 +3,40 @@ import { UserOutlined } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 import LoginForm from "./components/LoginForm";
 import HomePage from "./components/HomePage";
-import { logout } from "./utils";
+import { logout, paymentConfirm } from "./utils";
 
 const { Header, Content, Footer } = Layout;
 
 function App() {
   
-  const[loggedIn, setLoggedIn] = useState(true);// changed to false later
+  const[loggedIn, setLoggedIn] = useState(false);// changed to false later
 
-/*
+  useEffect(() => {
+    let state = doesHttpOnlyCookieExist('JSESSIONID');
+    console.log(state);
+    if (state) {
+      setLoggedIn(true);
+      return;
+    }
+  },[]);
+// need to decide keep this one or the one in Bills.js 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
     if (query.get("success")) {
-      message.success("Payment is made successfully!");
+        paymentConfirm();
+        // message.success("Payment is made successfully!");
     }
   },[]);
-*/
+
+  const doesHttpOnlyCookieExist = (cookieName) => {
+    let d = new Date();
+    d.setTime(d.getTime() + (1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cookieName + "=new_value;path=/;" + expires;
+    console.log(document.cookie.indexOf(cookieName + '=') === -1)
+    return document.cookie.indexOf(cookieName+'=')=== -1;
+  }
+
   const handleLogOut = async() =>{
     try{
       await logout();

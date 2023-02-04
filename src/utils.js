@@ -9,7 +9,7 @@ TODO:
 */
 
 
-const domain = "https://p8xxr552ll.execute-api.us-east-1.amazonaws.com";  
+const domain = '';  
 
 // handle the repsonse status returned from backend
 const handleResponseStatus = (response, errMsg) => {
@@ -31,7 +31,7 @@ export const login = (credential) => {
     const url = `${domain}/login`;
     return fetch(url, {
         method: "POST",
-        // credentials: "include",
+        credentials: "include",
         headers: {
             "Content-Type": "application/json",
         },
@@ -67,7 +67,7 @@ export const logout = () => {
     
     return fetch(url, {
         method: "POST",
-        // credentials: "include",
+        credentials: "include",
     }).then((response) => {
         handleResponseStatus(response, "Fail to log out.")
     })
@@ -80,7 +80,7 @@ export const getAnnouncements = () => {
     return fetch(url, {
         method: "GET",
         
-        // credentials: "include",
+        credentials: "include",
     }).then((response) => {
         handleResponseStatus(response, "Fail to get the Announcement list.");
         return response.json();
@@ -94,7 +94,7 @@ export const getBills = () => {
 
     return fetch(url, {
         method: "GET",
-        // credentials:"include",
+        credentials:"include",
     }).then((response) => {
         handleResponseStatus(response, "Fail to get the bills.");
         return response.json();
@@ -109,7 +109,7 @@ export const payBill = (invoiceId) => {
 
     return fetch(url, {
         method: "GET",
-        // credentials:"include",
+        credentials:"include",
 
     }).then((response) => {
         handleResponseStatus(response, "Fail to accept payment request.");
@@ -144,7 +144,7 @@ export const getRequests = () => {
 
     return fetch(url, {
         method: "GET",
-        // credentials:"include",
+        credentials:"include",
     }).then((response) => {
         handleResponseStatus(response, "Fail to get the maintenance requests.");
         return response.json();
@@ -159,7 +159,7 @@ export const newRequest = (data) => {
 
     return fetch(url, {
         method: "POST",
-        // credentials:"include",
+        credentials:"include",
         headers: {
             "Content-Type": "application/json",
         },
@@ -178,7 +178,7 @@ export const updateRequest = (data) => {
 
     return fetch(url, {
         method: "POST",
-        // credentials:"include",
+        credentials:"include",
         headers: {
             "Content-Type": "application/json",
         },
@@ -196,7 +196,7 @@ export const deleteRequest = (requestId) => {
 
     return fetch(url, {
         method: "POST",
-        // credentials:"include",
+        credentials:"include",
     }).then((response) => {
         handleResponseStatus(response, "Fail to delete the request.");
     });

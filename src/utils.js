@@ -10,6 +10,7 @@ TODO:
 
 
 const domain = '';  
+const testDomain = 'https://p8xxr552ll.execute-api.us-east-1.amazonaws.com';
 
 // handle the repsonse status returned from backend
 const handleResponseStatus = (response, errMsg) => {
@@ -140,7 +141,7 @@ export const paymentConfirm = () => {
 
 // get a list of maintenance requests
 export const getRequests = () => {
-    const url = `${domain}/maintenance`;
+    const url = `${testDomain}/maintenance`;
 
     return fetch(url, {
         method: "GET",

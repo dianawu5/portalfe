@@ -42,7 +42,7 @@ const EditRequest = ({info, onEditSuccess}) => {
                 initialValues={defaultData} size="middle"
             >
                 <FormItem name="requestId" label="Request#">
-                    <text style={{padding: "0px"}}>{defaultData.requestId}</text>
+                    <text style={{padding: "0px"}}>{defaultData.reqeustId}</text>
                 </FormItem>
                 <FormItem name="date" label="Submit Date">
                     <text style={{padding: "0px"}}>{defaultData.date}</text>

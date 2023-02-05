@@ -1,6 +1,6 @@
 import { Button, message, Space, Table, Popconfirm, Modal,} from 'antd';
 import { useEffect, useState } from 'react';
-import { deleteRequest, getRequests } from '../utils';
+import { deleteRequest, getBills, getRequests } from '../utils';
 import NewRequestButton from './NewRequestButton';
 import ViewRequest from './ViewRequest';
 import EditRequest from './EditRequest';
@@ -20,7 +20,8 @@ and
 */
 
 const Maintenance = () => {
-
+  const resp = getBills();
+  
   const[loading, setLoading] = useState(false);
   const[data, setData]=useState([]);
 
@@ -68,7 +69,7 @@ const Maintenance = () => {
           <Space size="large">
             <ViewRequest info={record} />
             <EditRequest info={record} onEditSuccess = {handleGetData} />
-            <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.requestId)}>
+            <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.reqeustId)}>
               <a style={{ fontSize: 14, fontWeight: 600, padding: 0 }}>Delete</a>
             </Popconfirm>
           </Space>
@@ -92,20 +93,32 @@ const Maintenance = () => {
     }
   };
 
-  const handleDelete = async(requestId) => {
-    
-    setLoading(true); 
-    try{
-      await deleteRequest(requestId);
-      message.success("You delete a reqeust successfully!");
-      handleGetData();
-    } catch (error) {
-      message.error(error.message);
-    } finally {
-      setLoading(false);  
-    }    
-  };
+  // const handleGetData = async() => {
+  //   setLoading(true);
+  //   try {
+  //     const resp = await getRequests();
+  //     setData(resp || []);
+  //   } catch(error) {
+  //     message.error(error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
+  const handleDelete = async(requestId) => {
+    const newData = data.filter((item) => item.reqeustId !== requestId); // Will be deleted once connected to server
+    setData(newData);// Will be deleted once connected to server
+    // setLoading(true); 
+    // try{
+    //   await deleteRequest(requestId);
+    //   message.success("You delete a reqeust successfully!");
+    //   handleGetData();
+    // } catch (error) {
+    //   message.error(error.message);
+    // } finally {
+    //   setLoading(false);  
+    // }    
+  };
 
     return(
         <div>
